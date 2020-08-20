@@ -21,16 +21,15 @@ pub fn find_max_consecutive_ones(nums: Vec<i32>) -> i32 {
             if number_of_consecutive_ones > max_consecutive_ones {
                 max_consecutive_ones = number_of_consecutive_ones;
             }
-        }
-        else {
-           number_of_consecutive_ones = 0;
+        } else {
+            number_of_consecutive_ones = 0;
         }
     }
     max_consecutive_ones
 }
 
 fn main() {
-    let input = vec![1,1,0,1,1,1];
+    let input = vec![1, 1, 0, 1, 1, 1];
     let number_of_consecutive_ones = find_max_consecutive_ones(input);
     println!("{}", number_of_consecutive_ones);
 }
