@@ -53,7 +53,7 @@ fn remove_element(nums: &mut Vec<i32>, val: i32) -> i32 {
     for index in 0..array_length {
         if nums[index] != val {
             nums[new_index] = nums[index];
-            new_index += 1
+            new_index += 1;
         }
     }
 
