@@ -12,7 +12,7 @@
 //     The input array will only contain 0 and 1.
 //     The length of input array is a positive integer and will not exceed 10,000
 
-pub fn find_max_consecutive_ones(nums: Vec<i32>) -> i32 {
+fn find_max_consecutive_ones(nums: Vec<i32>) -> i32 {
     let mut max_consecutive_ones = 0;
     let mut number_of_consecutive_ones = 0;
     for number in nums {
