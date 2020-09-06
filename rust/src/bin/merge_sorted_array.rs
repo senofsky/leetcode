@@ -17,12 +17,49 @@
 // Output: [1,2,2,3,5,6]
 
 fn merge(nums1: &mut Vec<i32>, m: i32, nums2: &mut Vec<i32>, n: i32) {
-    // TODO: Study Merge Sort Algorithm
+    let length = (m + n) as usize;
+    for i in 0..n as usize {
+        if nums1[i] >= nums2[i] {
+            for j in (i+1..length).rev() {
+                nums1[j] = nums1[j - 1];
+            }
+            nums1[i] = nums2[i];
+        } else {
+            for j in i..length {
+                if nums1[j] >= nums2[i] {
+                    for z in (j+1..length).rev() {
+                        nums1[z] = nums1[z - 1];
+                    }
+                    nums1[j] = nums2[i];
+                    break;
+                } else if j == i + m as usize {
+                    nums1[j] = nums2[i];
+                    break;
+                }
+            }
+        }
+    }
 }
 
 fn main() {
-    let mut nums1 = vec![1,2,3,0,0,0];
-    let mut nums2 = vec![2,5,6];
+    let mut nums1 = vec![1, 2, 3, 0, 0, 0];
+    let mut nums2 = vec![0, 1, 2];
     merge(&mut nums1, 3, &mut nums2, 3);
+    println!("{:?}", nums1);
+
+    let mut nums1 = vec![1, 2, 3, 0, 0, 0];
+    let mut nums2 = vec![2, 5, 6];
+    merge(&mut nums1, 3, &mut nums2, 3);
+    println!("{:?}", nums1);
+
+    let mut nums1 = vec![0, 0, 0, 0, 0];
+    let mut nums2 = vec![1, 2, 3, 4, 5];
+    merge(&mut nums1, 0, &mut nums2, 5);
+    println!("{:?}", nums1);
+
+    let mut nums1 = vec![-1, 3, 0, 0, 0, 0, 0];
+    let mut nums2 = vec![0, 0, 1, 2, 3];
+    merge(&mut nums1, 2, &mut nums2, 5);
+    // expect [-1,0,0,1,2,3,3]
     println!("{:?}", nums1);
 }
