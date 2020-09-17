@@ -20,14 +20,14 @@ fn merge(nums1: &mut Vec<i32>, m: i32, nums2: &mut Vec<i32>, n: i32) {
     let length = (m + n) as usize;
     for i in 0..n as usize {
         if nums1[i] >= nums2[i] {
-            for j in (i+1..length).rev() {
+            for j in (i + 1..length).rev() {
                 nums1[j] = nums1[j - 1];
             }
             nums1[i] = nums2[i];
         } else {
             for j in i..length {
                 if nums1[j] >= nums2[i] {
-                    for z in (j+1..length).rev() {
+                    for z in (j + 1..length).rev() {
                         nums1[z] = nums1[z - 1];
                     }
                     nums1[j] = nums2[i];
